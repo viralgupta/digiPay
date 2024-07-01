@@ -112,7 +112,7 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
 
 app.use('/api/sendmessage', async (req, res) => {
     const {payid, amount, seller, reason} = req.body;
-    await client.sendMessage("919173409103@c.us", `Payment Id: ${payid}\nDo you want to confirm payment of ₹${amount} to ${seller}\nReason: ${reason}\n*Yes* to confirm, *No* to Reject.`)
+    await client.sendMessage(process.env.MY_PHONE, `Payment Id: ${payid}\nDo you want to confirm payment of ₹${amount} to ${seller}\nReason: ${reason}\n*Yes* to confirm, *No* to Reject.`)
     res.json({success: true})
 });
 
